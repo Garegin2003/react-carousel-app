@@ -1,7 +1,7 @@
 const Image = ({ image, onClick }) => {
     return (
       <div className="image" onClick={onClick}>
-        <img src={image.url} alt={image.title} />
+        <img src={image.images[0]} alt={image.title} />
       </div>
     );
   };

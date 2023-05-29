@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import fetchImages from "./carouselApi";
 
 const carouselSlice = createSlice({
     name: 'carousel',
@@ -10,15 +11,29 @@ const carouselSlice = createSlice({
     },
     reducers: {
         setImages: (state, action) => {
-            state.images = action.payload
+            state.images = action.payload || []
         },
         setCurrentPage: (state, action) => {
-            state.currentPage = action.payload
+            state.currentPage = action.payload 
         },
         setEnlargedImages: (state, action) => {
             state.enlargedImage = action.payload
         }
     },
+    extraReducers: {
+        [fetchImages.pending]: () => {
+          console.log('Loading...');
+        },
+        [fetchImages.fulfilled]: (state, action) => {
+          console.log('Fulfilled', action.payload);
+          state.images = action.payload || []; // Update the images state with the fetched images
+        },
+        [fetchImages.rejected]: () => {
+          console.log('Rejected');
+        }
+      }
+      
+    
     
 })
 
