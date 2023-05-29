@@ -18,7 +18,8 @@ const carouselSlice = createSlice({
         setEnlargedImages: (state, action) => {
             state.enlargedImage = action.payload
         }
-    }
+    },
+    
 })
 
 export const {setImages, setCurrentPage, setEnlargedImages} = carouselSlice.actions
