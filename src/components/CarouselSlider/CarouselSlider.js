@@ -5,20 +5,18 @@ import {
   setCurrentIndex,
   setEnlargedImages,
 } from '../../store/slices/carouselSlice';
-import style from "./CarouselSlider.module.css"
+import style from './CarouselSlider.module.css';
 
 const CarouselSlider = () => {
   const carousel = useSelector(selectCarousel);
-  const { images,currentIndex } = carousel;
-    console.log(currentIndex);
+  const { images, currentIndex } = carousel;
   const dispatch = useDispatch();
 
   useEffect(() => {
     const timer = setInterval(() => {
-    
       dispatch(setCurrentIndex(currentIndex + 1));
     }, 3000);
-  
+
     return () => {
       clearInterval(timer);
     };
@@ -26,6 +24,13 @@ const CarouselSlider = () => {
   const handleImageClick = (image) => {
     dispatch(setEnlargedImages(image));
   };
+  const prevHandler = () => {
+    dispatch(setCurrentIndex(currentIndex - 1))
+  }
+
+  const nextHandler = () => {
+    dispatch(setCurrentIndex(currentIndex + 1))
+  }
 
   if (!images.length) {
     return null;
@@ -33,6 +38,7 @@ const CarouselSlider = () => {
 
   return (
     <div className={style.carousel_slider}>
+        <button onClick={prevHandler}>Previous</button>
       {images.map((image, index) => (
         <img
           key={index}
@@ -42,6 +48,7 @@ const CarouselSlider = () => {
           onClick={() => handleImageClick(image)}
         />
       ))}
+      <button onClick={nextHandler}>Next</button>
     </div>
   );
 };
