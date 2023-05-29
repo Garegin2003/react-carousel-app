@@ -7,6 +7,7 @@ const carouselSlice = createSlice({
         images: [],
         currentPage:1,
         itemsPerPage: 10,
+        currentIndex: 0,
         enlargedImage: null
     },
     reducers: {
@@ -18,7 +19,10 @@ const carouselSlice = createSlice({
         },
         setEnlargedImages: (state, action) => {
             state.enlargedImage = action.payload
-        }
+        },
+        setCurrentIndex: (state, action) => {
+          state.currentIndex = action.payload % state.images.length;
+        },
     },
     extraReducers: {
         [fetchImages.pending]: () => {
@@ -37,7 +41,7 @@ const carouselSlice = createSlice({
     
 })
 
-export const {setImages, setCurrentPage, setEnlargedImages} = carouselSlice.actions
+export const {setImages, setCurrentPage, setEnlargedImages, setCurrentIndex} = carouselSlice.actions
 
 export const selectCarousel = state => state.carousel
 

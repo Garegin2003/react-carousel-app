@@ -1,0 +1,18 @@
+.carousel_slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  background-color: #f1f1f1;
+}
+.carousel_slider img {
+  max-width: 100%;
+  height: auto;
+  opacity: 0.8;
+  transition: opacity 0.3s ease-in-out;
+  width: 50px;
+}
+.carousel_slider img.active {
+  width: 200px !important;
+  opacity: 1 !important;
+}/*# sourceMappingURL=CarouselSlider.module.css.map */

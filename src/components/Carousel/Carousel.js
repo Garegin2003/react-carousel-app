@@ -8,11 +8,12 @@ import {
 import fetchImages from '../../store/slices/carouselApi';
 import Image from '../Image/Image';
 import EnlargedCarouselImage from '../EnlargedCarouselImage/EnlargedCarouselImage';
+import CarouselSlider from '../CarouselSlider/CarouselSlider';
 
 const Carousel = () => {
   const dispatch = useDispatch();
   const carousel = useSelector(selectCarousel);
-  const { images, currentPage, itemsPerPage, enlargedImage } = carousel;
+  const { images, currentPage, itemsPerPage } = carousel;
   useEffect(() => {
     dispatch(fetchImages());
   }, [dispatch]);
@@ -45,6 +46,7 @@ const Carousel = () => {
 
   return (
     <div className="carousel">
+      <CarouselSlider />
       {displayedImages.map((image) => (
         <Image
           key={image.id}
