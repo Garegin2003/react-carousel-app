@@ -25,12 +25,12 @@ const CarouselSlider = () => {
     dispatch(setEnlargedImages(image));
   };
   const prevHandler = () => {
-    dispatch(setCurrentIndex(currentIndex - 1))
-  }
+    dispatch(setCurrentIndex(currentIndex - 1));
+  };
 
   const nextHandler = () => {
-    dispatch(setCurrentIndex(currentIndex + 1))
-  }
+    dispatch(setCurrentIndex(currentIndex + 1));
+  };
 
   if (!images.length) {
     return null;
@@ -38,7 +38,7 @@ const CarouselSlider = () => {
 
   return (
     <div className={style.carousel_slider}>
-        <button onClick={prevHandler}>Previous</button>
+      <button onClick={prevHandler}>Previous</button>
       {images.map((image, index) => (
         <img
           key={index}

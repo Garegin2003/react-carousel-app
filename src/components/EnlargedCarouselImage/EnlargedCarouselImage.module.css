@@ -26,12 +26,16 @@
   display: block;
   margin: 0 auto;
 }
-.enlarged_carousel_image_overlay .enlarged_carousel_image_container .image_info {
+.enlarged_carousel_image_overlay
+  .enlarged_carousel_image_container
+  .image_info {
   background-color: white;
   padding: 20px;
 }
-.enlarged_carousel_image_overlay .enlarged_carousel_image_container .close_button {
+.enlarged_carousel_image_overlay
+  .enlarged_carousel_image_container
+  .close_button {
   position: absolute;
   top: 10px;
   right: 10px;
-}/*# sourceMappingURL=EnlargedCarouselImage.module.css.map */
+} /*# sourceMappingURL=EnlargedCarouselImage.module.css.map */

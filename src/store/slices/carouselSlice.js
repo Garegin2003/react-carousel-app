@@ -1,52 +1,55 @@
-import { createSlice } from "@reduxjs/toolkit";
-import fetchImages from "./carouselApi";
+import { createSlice } from '@reduxjs/toolkit';
+import fetchImages from './carouselApi';
 
 const carouselSlice = createSlice({
-    name: 'carousel',
-    initialState: {
-        images: [],
-        currentPage:1,
-        itemsPerPage: 10,
-        currentIndex: 0,
-        radius: 0,
-        enlargedImage: null
+  name: 'carousel',
+  initialState: {
+    images: [],
+    currentPage: 1,
+    itemsPerPage: 10,
+    currentIndex: 0,
+    radius: 0,
+    enlargedImage: null,
+  },
+  reducers: {
+    setImages: (state, action) => {
+      state.images = action.payload || [];
     },
-    reducers: {
-        setImages: (state, action) => {
-            state.images = action.payload || []
-        },
-        setCurrentPage: (state, action) => {
-            state.currentPage = action.payload 
-        },
-        setEnlargedImages: (state, action) => {
-            state.enlargedImage = action.payload
-        },
-        setCurrentIndex: (state, action) => {
-          state.currentIndex = action.payload % state.images.length;
-        },
-        setRadius: (state, action) => {
-          state.radius = action.payload
-        }
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
     },
-    extraReducers: {
-        [fetchImages.pending]: () => {
-          console.log('Loading...');
-        },
-        [fetchImages.fulfilled]: (state, action) => {
-          console.log('Fulfilled', action.payload);
-          state.images = action.payload || []; // Update the images state with the fetched images
-        },
-        [fetchImages.rejected]: () => {
-          console.log('Rejected');
-        }
-      }
-      
-    
-    
-})
+    setEnlargedImages: (state, action) => {
+      state.enlargedImage = action.payload;
+    },
+    setCurrentIndex: (state, action) => {
+      state.currentIndex = action.payload % state.images.length;
+    },
+    setRadius: (state, action) => {
+      state.radius = action.payload;
+    },
+  },
+  extraReducers: {
+    [fetchImages.pending]: () => {
+      console.log('Loading...');
+    },
+    [fetchImages.fulfilled]: (state, action) => {
+      console.log('Fulfilled', action.payload);
+      state.images = action.payload || []; // Update the images state with the fetched images
+    },
+    [fetchImages.rejected]: () => {
+      console.log('Rejected');
+    },
+  },
+});
 
-export const {setImages, setCurrentPage, setEnlargedImages, setCurrentIndex, setRadius} = carouselSlice.actions
+export const {
+  setImages,
+  setCurrentPage,
+  setEnlargedImages,
+  setCurrentIndex,
+  setRadius,
+} = carouselSlice.actions;
 
-export const selectCarousel = state => state.carousel
+export const selectCarousel = (state) => state.carousel;
 
-export const carouselReducer = carouselSlice.reducer
+export const carouselReducer = carouselSlice.reducer;
