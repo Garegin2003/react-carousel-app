@@ -7,6 +7,7 @@ import {
 } from '../../store/slices/carouselSlice';
 import fetchImages from '../../store/slices/carouselApi';
 import Image from '../Image/Image';
+import EnlargedCarouselImage from '../EnlargedCarouselImage/EnlargedCarouselImage';
 
 const Carousel = () => {
   const dispatch = useDispatch();
@@ -51,16 +52,6 @@ const Carousel = () => {
           onClick={() => handleImageClick(image)}
         />
       ))}
-      {enlargedImage && (
-        <div className="enlarged-image">
-          <img src={enlargedImage.images[0]} alt={enlargedImage.title} />
-          <div className="image-details">
-            <h3>{enlargedImage.title}</h3>
-            <p>{enlargedImage.description}</p>
-            <p>Price: ${enlargedImage.price}</p>
-          </div>
-        </div>
-      )}
       <div className="pagination">
         <button onClick={handlePrevPage} disabled={currentPage === 1}>
           Previous
@@ -73,6 +64,7 @@ const Carousel = () => {
           Next
         </button>
       </div>
+      <EnlargedCarouselImage />
     </div>
   );
 };
