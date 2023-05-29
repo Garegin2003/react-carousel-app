@@ -8,6 +8,7 @@ const carouselSlice = createSlice({
         currentPage:1,
         itemsPerPage: 10,
         currentIndex: 0,
+        radius: 0,
         enlargedImage: null
     },
     reducers: {
@@ -23,6 +24,9 @@ const carouselSlice = createSlice({
         setCurrentIndex: (state, action) => {
           state.currentIndex = action.payload % state.images.length;
         },
+        setRadius: (state, action) => {
+          state.radius = action.payload
+        }
     },
     extraReducers: {
         [fetchImages.pending]: () => {
@@ -41,7 +45,7 @@ const carouselSlice = createSlice({
     
 })
 
-export const {setImages, setCurrentPage, setEnlargedImages, setCurrentIndex} = carouselSlice.actions
+export const {setImages, setCurrentPage, setEnlargedImages, setCurrentIndex, setRadius} = carouselSlice.actions
 
 export const selectCarousel = state => state.carousel
 

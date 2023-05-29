@@ -9,6 +9,7 @@ import fetchImages from '../../store/slices/carouselApi';
 import Image from '../Image/Image';
 import EnlargedCarouselImage from '../EnlargedCarouselImage/EnlargedCarouselImage';
 import CarouselSlider from '../CarouselSlider/CarouselSlider';
+import style from './Carousel.module.css';
 
 const Carousel = () => {
   const dispatch = useDispatch();
@@ -45,20 +46,21 @@ const Carousel = () => {
   };
 
   return (
-    <div className="carousel">
+    <>
       <CarouselSlider />
-      {displayedImages.map((image) => (
-        <Image
-          key={image.id}
-          image={image}
-          onClick={() => handleImageClick(image)}
-        />
-      ))}
-      <div className="pagination">
+      <div className={style.carousel}>
+        {displayedImages.map((image) => (
+          <Image
+            key={image.id}
+            image={image}
+            onClick={() => handleImageClick(image)}
+          />
+        ))}{' '}
+      </div>
+      <div className={style.pagination}>
         <button onClick={handlePrevPage} disabled={currentPage === 1}>
           Previous
         </button>
-        <span>{currentPage}</span>
         <button
           onClick={handleNextPage}
           disabled={currentPage === Math.ceil(images.length / itemsPerPage)}
@@ -67,7 +69,7 @@ const Carousel = () => {
         </button>
       </div>
       <EnlargedCarouselImage />
-    </div>
+    </>
   );
 };
 
